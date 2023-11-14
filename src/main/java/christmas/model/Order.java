@@ -9,7 +9,7 @@ public class Order {
     private ValidateOrder validateOrder;
     private HashMap<String,Integer> order;
 
-    public Order(final String input) {
+    public Order(final String input) throws IllegalArgumentException {
         validateOrder = new ValidateOrder();
         order = new HashMap<>();
         List<String> menuWithNum = new ArrayList<>(validateOrder.removeBlankAndSplit(input));
@@ -20,9 +20,12 @@ public class Order {
         String[] splitHyphen;
         for (String menuNum : menuWithNum) {
             splitHyphen = validateOrder.checkHyphen(menuNum).split("-");
+            validateOrder.checkContain(splitHyphen[0]);
+            validateOrder.checkOverlap(splitHyphen[0],order);
             order.put(splitHyphen[0],validateOrder.checkNumber(splitHyphen[1]));
         }
     }
+
 
 
 }

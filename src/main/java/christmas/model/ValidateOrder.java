@@ -1,6 +1,7 @@
 package christmas.model;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ValidateOrder {
@@ -28,6 +29,25 @@ public class ValidateOrder {
 
     private void checkRange(int num) throws IllegalArgumentException {
         if (num < MIN_ORDER ) {
+            throw new IllegalArgumentException(ErrorMessage.invalidOrder());
+        }
+    }
+
+    public void checkContain(final String name) throws IllegalArgumentException {
+        boolean include = false;
+        for (Menus menu : Menus.values()) {
+            if(name.equals(menu.getName())) {
+                include = true;
+                break;
+            }
+        }
+        if (!include) {
+            throw new IllegalArgumentException(ErrorMessage.invalidOrder());
+        }
+    }
+
+    public void checkOverlap(final String name, HashMap<String,Integer> order) throws IllegalArgumentException {
+        if(order.containsKey(name)) {
             throw new IllegalArgumentException(ErrorMessage.invalidOrder());
         }
     }
