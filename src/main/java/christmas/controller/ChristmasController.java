@@ -20,4 +20,8 @@ public class ChristmasController {
             inputDate();
         }
     }
+
+    public void inputMenu() {
+
+    }
 }
