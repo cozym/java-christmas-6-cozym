@@ -20,7 +20,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String readMenu() {
+    public static String readOrder() {
         System.out.println(MENU_INPUT_MESSAGE);
         return Console.readLine();
     }

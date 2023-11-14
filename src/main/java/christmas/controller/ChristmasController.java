@@ -1,15 +1,19 @@
 package christmas.controller;
 
 import christmas.model.Date;
+import christmas.model.Order;
 import christmas.view.InputView;
 
 public class ChristmasController {
     private Date date;
+    private Order order;
 
     public void start() {
         InputView.printStart();
 
         inputDate();
+
+        inputOrder();
     }
 
     public void inputDate() {
@@ -21,7 +25,12 @@ public class ChristmasController {
         }
     }
 
-    public void inputMenu() {
-
+    public void inputOrder() {
+        try {
+            order = new Order(InputView.readOrder());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            inputOrder();
+        }
     }
 }
