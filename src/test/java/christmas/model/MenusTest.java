@@ -12,9 +12,9 @@ class MenusTest {
     @DisplayName("공백 제거 및 컴마 기준 스플릿 테스트")
     @Test
     void 공백제거_컴마스플릿() {
-        Menus menus = new Menus("타파스-1,제로콜라-1");
+        ValidateOrder validateOrder = new ValidateOrder();
         List<String> afterCheck = Arrays.asList("타파스-1,제로콜라-1".split(","));
-        Assertions.assertEquals(afterCheck,menus.removeBlankAndSplit(" 타파스-1, 제로콜라-1"));
+        Assertions.assertEquals(afterCheck,validateOrder.removeBlankAndSplit(" 타파스-1, 제로콜라-1"));
     }
 
     @DisplayName("-이 존재하지 않는다면 예외처리")
