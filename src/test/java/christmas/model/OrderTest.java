@@ -36,5 +36,12 @@ class OrderTest {
                 .hasMessageContaining("유효하지 않은 주문입니다");
     }
 
-
+    @DisplayName("메뉴판에 없는 메뉴를 입력하거나 중복 메뉴를 입력한 경우 예외처리")
+    @ValueSource(strings = {"엽기떡볶이-1,제로콜라-1","타파스-1,타파스-2"})
+    @ParameterizedTest
+    void 메뉴_유효성검사(String order) {
+        assertThatThrownBy(() -> new Order(order))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 주문입니다");
+    }
 }
