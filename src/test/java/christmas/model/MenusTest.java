@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class MenusTest {
     @DisplayName("공백 제거 및 컴마 기준 스플릿 테스트")
@@ -21,6 +23,15 @@ class MenusTest {
     @Test
     void 하이픈_유무검사() {
         assertThatThrownBy(() -> new Menus("타파스1,제로콜라2"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 주문입니다");
+    }
+
+    @DisplayName("메뉴 개수가 1 이상의 숫자가 아닐 경우 예외처리")
+    @ValueSource(strings = {"0","-1","c"})
+    @ParameterizedTest
+    void 메뉴_개수검사(String orderNum) {
+        assertThatThrownBy(() -> new ValidateOrder().checkNumber(orderNum))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 주문입니다");
     }

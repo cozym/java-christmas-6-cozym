@@ -20,7 +20,7 @@ public class Menus {
         String[] splitHyphen;
         for (String menuNum : menuWithNum) {
             splitHyphen = validateOrder.checkHyphen(menuNum).split("-");
-            menus.put(splitHyphen[0],Integer.parseInt(splitHyphen[1]));
+            menus.put(splitHyphen[0],validateOrder.checkNumber(splitHyphen[1]));
         }
     }
 

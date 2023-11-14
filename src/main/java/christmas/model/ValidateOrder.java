@@ -16,19 +16,19 @@ public class ValidateOrder {
         return menuNum;
     }
 
-    private int validateNumber(String num) throws IllegalArgumentException {
+    public int checkNumber(String num) throws IllegalArgumentException {
         try {
             int menuNum = Integer.parseInt(num);
-            validateRange(menuNum);
+            checkRange(menuNum);
             return menuNum;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.invalidDate());
+            throw new IllegalArgumentException(ErrorMessage.invalidOrder());
         }
     }
 
-    private void validateRange(int num) throws IllegalArgumentException {
+    private void checkRange(int num) throws IllegalArgumentException {
         if (num < MIN_ORDER ) {
-            throw new IllegalArgumentException(ErrorMessage.invalidDate());
+            throw new IllegalArgumentException(ErrorMessage.invalidOrder());
         }
     }
 }
