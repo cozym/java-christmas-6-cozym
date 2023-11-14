@@ -5,7 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ValidateOrder {
+    private static final String BEVERAGE = "Beverage";
     private static final int MIN_ORDER = 1;
+    private boolean onlyBeverage;
+
+    public ValidateOrder(final boolean onlyBeverage) {
+        this.onlyBeverage = onlyBeverage;
+    }
+
     public List<String> removeBlankAndSplit(final String input) {
         return Arrays.asList(input.replace(" ","").split(","));
     }
@@ -38,6 +45,7 @@ public class ValidateOrder {
         for (Menus menu : Menus.values()) {
             if(name.equals(menu.getName())) {
                 include = true;
+
                 break;
             }
         }
@@ -49,6 +57,18 @@ public class ValidateOrder {
     public void checkOverlap(final String name, HashMap<String,Integer> order) throws IllegalArgumentException {
         if(order.containsKey(name)) {
             throw new IllegalArgumentException(ErrorMessage.invalidOrder());
+        }
+    }
+
+    public void checkOnlyBeverage(Menus menu) {
+        if (!menu.getClassification().equals(BEVERAGE)) {
+            this.onlyBeverage = false;
+        }
+    }
+
+    public void onlyBeverage() throws IllegalArgumentException {
+        if (onlyBeverage) {
+            throw new IllegalArgumentException(ErrorMessage.impossibleOnlyBeverage());
         }
     }
 }

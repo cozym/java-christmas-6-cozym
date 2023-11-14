@@ -10,10 +10,11 @@ public class Order {
     private HashMap<String,Integer> order;
 
     public Order(final String input) throws IllegalArgumentException {
-        validateOrder = new ValidateOrder();
+        validateOrder = new ValidateOrder(true);
         order = new HashMap<>();
         List<String> menuWithNum = new ArrayList<>(validateOrder.removeBlankAndSplit(input));
         validateOrder(menuWithNum);
+        validateOrder.onlyBeverage();
     }
 
     public void validateOrder(final List<String> menuWithNum) throws IllegalArgumentException {
