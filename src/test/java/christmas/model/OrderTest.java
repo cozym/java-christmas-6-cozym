@@ -52,4 +52,12 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("음료만 주문 시, 주문할 수 없습니다");
     }
+
+    @DisplayName("메뉴 개수가 20개가 넘을 경우 예외처리")
+    @Test
+    void 주문_최대개수검사() {
+        assertThatThrownBy(() -> new Order("타파스-10,티본스테이크-9,제로콜라-5"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("최대 20개까지만 주문할 수 있습니다");
+    }
 }

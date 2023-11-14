@@ -14,6 +14,7 @@ public class Order {
         List<String> menuWithNum = new ArrayList<>(validateOrder.removeBlankAndSplit(input));
         validateOrder(menuWithNum);
         validateOrder.onlyBeverage();
+        validateOrder.checkMaxOrderNum(order);
     }
 
     public void validateOrder(final List<String> menuWithNum) throws IllegalArgumentException {
