@@ -44,4 +44,12 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 주문입니다");
     }
+
+    @DisplayName("음료만 주문 시 예외처리")
+    @Test
+    void 음료만_주문검사() {
+        assertThatThrownBy(() -> new Order("레드와인-1,제로콜라-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("음료만 주문 시, 주문할 수 없습니다");
+    }
 }

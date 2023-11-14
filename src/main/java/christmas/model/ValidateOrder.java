@@ -45,7 +45,7 @@ public class ValidateOrder {
         for (Menus menu : Menus.values()) {
             if(name.equals(menu.getName())) {
                 include = true;
-
+                checkOnlyBeverage(menu);
                 break;
             }
         }
