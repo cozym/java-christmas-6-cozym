@@ -17,7 +17,7 @@ public class Order {
         validateOrder.checkMaxOrderNum(order);
     }
 
-    public void validateOrder(final List<String> menuWithNum) throws IllegalArgumentException {
+    private void validateOrder(final List<String> menuWithNum) throws IllegalArgumentException {
         String[] splitHyphen;
         for (String menuNum : menuWithNum) {
             splitHyphen = validateOrder.checkHyphen(menuNum).split("-");

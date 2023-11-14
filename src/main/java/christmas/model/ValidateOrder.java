@@ -61,7 +61,7 @@ public class ValidateOrder {
         }
     }
 
-    public void checkOnlyBeverage(Menus menu) {
+    private void checkOnlyBeverage(Menus menu) {
         if (!menu.getClassification().equals(BEVERAGE)) {
             this.onlyBeverage = false;
         }
