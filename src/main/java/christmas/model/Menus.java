@@ -11,7 +11,7 @@ public class Menus {
     public Menus(final String input) {
         menus = new HashMap<>();
         List<String> menuWithNum = new ArrayList<>(removeBlankAndSplit(input));
-
+        validateOrder(menuWithNum);
     }
 
     public List<String> removeBlankAndSplit(final String input) {
@@ -32,4 +32,6 @@ public class Menus {
         }
         return menuNum;
     }
+
+
 }

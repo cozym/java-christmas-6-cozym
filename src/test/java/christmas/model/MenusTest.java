@@ -1,6 +1,6 @@
 package christmas.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,5 +15,13 @@ class MenusTest {
         Menus menus = new Menus("타파스-1,제로콜라-1");
         List<String> afterCheck = Arrays.asList("타파스-1,제로콜라-1".split(","));
         Assertions.assertEquals(afterCheck,menus.removeBlankAndSplit(" 타파스-1, 제로콜라-1"));
+    }
+
+    @DisplayName("-이 존재하지 않는다면 예외처리")
+    @Test
+    void 하이픈_유무검사() {
+        assertThatThrownBy(() -> new Menus("타파스1,제로콜라2"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("유효하지 않은 주문입니다");
     }
 }
