@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class MenusTest {
+class OrderTest {
     @DisplayName("공백 제거 및 컴마 기준 스플릿 테스트")
     @Test
     void 공백제거_컴마스플릿() {
@@ -22,7 +22,7 @@ class MenusTest {
     @DisplayName("-이 존재하지 않는다면 예외처리")
     @Test
     void 하이픈_유무검사() {
-        assertThatThrownBy(() -> new Menus("타파스1,제로콜라2"))
+        assertThatThrownBy(() -> new Order("타파스1,제로콜라2"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 주문입니다");
     }
