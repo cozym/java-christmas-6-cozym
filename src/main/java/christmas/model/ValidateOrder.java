@@ -7,6 +7,7 @@ import java.util.List;
 public class ValidateOrder {
     private static final String BEVERAGE = "Beverage";
     private static final int MIN_ORDER = 1;
+    private static final int MAX_ORDER = 20;
     private boolean onlyBeverage;
 
     public ValidateOrder(final boolean onlyBeverage) {
@@ -69,6 +70,16 @@ public class ValidateOrder {
     public void onlyBeverage() throws IllegalArgumentException {
         if (onlyBeverage) {
             throw new IllegalArgumentException(ErrorMessage.impossibleOnlyBeverage());
+        }
+    }
+
+    public void checkMaxOrderNum(final HashMap<String,Integer> order) {
+        int sum = 0;
+        for (int number : order.values()) {
+            sum += number;
+        }
+        if (sum > MAX_ORDER) {
+            throw new IllegalArgumentException(ErrorMessage.orderFull());
         }
     }
 }

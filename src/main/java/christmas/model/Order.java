@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Order {
-    private static final int MIN_ORDER = 1;
     private ValidateOrder validateOrder;
     private HashMap<String,Integer> order;
 
