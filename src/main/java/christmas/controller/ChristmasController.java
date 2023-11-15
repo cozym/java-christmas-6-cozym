@@ -59,10 +59,12 @@ public class ChristmasController {
     }
 
     public int calculateTotalDiscount() {
-        int total = 0;
-        event.christmasDiscount(date.getDate());
+        int total = 0, visitDate = date.getDate();
+        event.christmasDiscount(visitDate);
+        event.weekdayDiscount(visitDate,order);
+        event.weekendDiscount(visitDate,order);
+        event.specialDiscount(visitDate);
         event.giftDiscount();
-        event.weekdayDiscount(date.getDate(),order);
         return total;
     }
 }

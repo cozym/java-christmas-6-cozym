@@ -13,9 +13,10 @@ public class Event {
     private static final int CHRISTMAS_DATE = 25;
     private static final int CHAMPAGNE_PRICE = 25000;
     private static final int WEEK_DISCOUNT_PRICE = 2023;
+    private static final int SPECIAL_DISCOUNT_PRICE = 1000;
     private List<Integer> weekend;
     private List<Integer> weekday;
-    private List<Integer> starday;
+    private List<Integer> specialday;
     private List<String> benefits;
     private boolean gift;
     DecimalFormat df = new DecimalFormat("###,###");
@@ -24,7 +25,7 @@ public class Event {
         weekend = Arrays.asList(1,2,8,9,15,16,22,23,29,30);
         weekday = new ArrayList<>();
         setWeekday();
-        starday = Arrays.asList(3,10,17,24,25,31);
+        specialday = Arrays.asList(3,10,17,24,25,31);
         benefits = new ArrayList<>();
         gift = false;
     }
@@ -77,4 +78,21 @@ public class Event {
         return discount;
     }
 
+    public int weekendDiscount(int date, Order order) {
+        int discount = 0;
+        if (weekend.contains(date)) {
+            discount = order.getClassificationNum("MainDish") * WEEK_DISCOUNT_PRICE;
+            benefits.add(String.format("주말 할인: -%s원",df.format(discount)));
+        }
+        return discount;
+    }
+
+    public int specialDiscount(int date) {
+        int discount = 0;
+        if (specialday.contains(date)) {
+            discount += SPECIAL_DISCOUNT_PRICE;
+            benefits.add(String.format("특별 할인: -%s원",df.format(discount)));
+        }
+        return discount;
+    }
 }
