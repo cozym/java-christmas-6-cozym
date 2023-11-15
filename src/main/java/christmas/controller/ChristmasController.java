@@ -51,20 +51,13 @@ public class ChristmasController {
 
     public void benefitInfo() {
         int totalDiscountPrice = calculateTotalDiscount();
+        event.applyDiscounts(date.getDate(),order);
         OutputView.printBenefit(event);
+
     }
 
     public void checkGiftMenu() {
         OutputView.printGiftMenu(event.getGiftMenu(order.priceBeforeDiscount()));
     }
 
-    public int calculateTotalDiscount() {
-        int total = 0, visitDate = date.getDate();
-        event.christmasDiscount(visitDate);
-        event.weekdayDiscount(visitDate,order);
-        event.weekendDiscount(visitDate,order);
-        event.specialDiscount(visitDate);
-        event.giftDiscount();
-        return total;
-    }
 }

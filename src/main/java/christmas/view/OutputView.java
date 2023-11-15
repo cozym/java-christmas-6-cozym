@@ -11,6 +11,8 @@ public class OutputView {
     private static final String BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
     private static final String GIFT_MENU = "<증정 메뉴>";
     private static final String BENEFIT = "<혜택 내역>";
+    private static final String TOTAL_BENEFIT_PRICE = "<총혜택 금액>";
+    private static final String PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
     static DecimalFormat df = new DecimalFormat("###,###");
 
 
@@ -51,5 +53,11 @@ public class OutputView {
         for (String benefit : event.getBenefits()) {
             System.out.println(benefit);
         }
+    }
+
+    public static void printTotalBenefitPrice() {
+        printEmptyLine();
+        System.out.println(TOTAL_BENEFIT_PRICE);
+
     }
 }
