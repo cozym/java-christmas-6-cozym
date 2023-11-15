@@ -45,7 +45,7 @@ public class ChristmasController {
         event = new Event();
         OutputView.startPrintEvent(date);
         OutputView.printOrderMenu(order.getOrder());
-        OutputView.printPriceBeforeDiscount(order);
+        OutputView.printPriceBeforeDiscount(order.priceBeforeDiscount());
         checkGiftMenu();
     }
 
@@ -53,6 +53,7 @@ public class ChristmasController {
         event.applyDiscounts(date.getDate(),order);
         OutputView.printBenefit(event);
         OutputView.printTotalBenefitPrice(event.getTotalDiscount());
+        OutputView.printPriceAfterDiscount(order.priceBeforeDiscount(),event.getDirectDiscount());
     }
 
     public void checkGiftMenu() {

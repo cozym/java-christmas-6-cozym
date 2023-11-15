@@ -57,6 +57,14 @@ public class Event {
         return this.totalDiscount;
     }
 
+    public int getDirectDiscount() {
+        int directDiscount = totalDiscount;
+        if (gift) {
+            directDiscount -= CHAMPAGNE_PRICE;
+        }
+        return directDiscount;
+    }
+
     public int christmasDiscount(int date) {
         int discount = 0;
         if (date <= CHRISTMAS_DATE) {

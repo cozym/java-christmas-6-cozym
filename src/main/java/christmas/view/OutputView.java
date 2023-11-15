@@ -2,7 +2,6 @@ package christmas.view;
 
 import christmas.model.Date;
 import christmas.model.Event;
-import christmas.model.Order;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
@@ -36,10 +35,10 @@ public class OutputView {
         });
     }
 
-    public static void printPriceBeforeDiscount(Order order) {
+    public static void printPriceBeforeDiscount(int priceBeforeDiscount) {
         printEmptyLine();
         System.out.println(BEFORE_DISCOUNT);
-        System.out.printf("%s원",df.format(order.priceBeforeDiscount()));
+        System.out.printf("%s원",df.format(priceBeforeDiscount));
         printEmptyLine();
     }
 
@@ -65,5 +64,11 @@ public class OutputView {
             totalBenefitPrice = String.format("-%s원",df.format(totalDiscount));
         }
         System.out.println(totalBenefitPrice);
+    }
+
+    public static void printPriceAfterDiscount(int priceBeforeDiscount, int directDiscount) {
+        printEmptyLine();
+        System.out.println(PRICE_AFTER_DISCOUNT);
+        System.out.printf("%s원",df.format(priceBeforeDiscount-directDiscount));
     }
 }
