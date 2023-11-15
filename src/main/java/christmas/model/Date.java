@@ -25,4 +25,7 @@ public class Date {
         }
     }
 
+    public int getDate() {
+        return this.date;
+    }
 }

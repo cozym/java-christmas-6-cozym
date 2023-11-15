@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.view.InputView;
+import christmas.view.OutputView;
 
 public class ChristmasController {
     private Date date;
@@ -14,6 +15,8 @@ public class ChristmasController {
         inputDate();
 
         inputOrder();
+
+        OutputView.startPrintEvent(date);
     }
 
     public void inputDate() {
