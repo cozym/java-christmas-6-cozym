@@ -45,6 +45,26 @@ public class Order {
         return price;
     }
 
+    public int getClassificationNum(String classification) {
+        int num = 0;
+        for (String name : order.keySet()) {
+            if (isClassification(name,classification)) {
+                num += order.get(name);
+            }
+        }
+        return num;
+    }
+
+    private boolean isClassification(String menuName , String classification) {
+        boolean match = false;
+        for (Menus menu : Menus.values()) {
+            if(menuName.equals(menu.getName()) && classification.equals(menu.getClassification())) {
+                match = true;
+            }
+        }
+        return match;
+    }
+
     public HashMap<String,Integer> getOrder() {
         return order;
     }

@@ -11,6 +11,8 @@ public class Event {
     private static final int PRICE_FOR_GIFT = 120000;
     private static final int CHRISTMAS_DEFALT_DISCOUNT = 1000;
     private static final int CHRISTMAS_DATE = 25;
+    private static final int CHAMPAGNE_PRICE = 25000;
+    private static final int WEEK_DISCOUNT_PRICE = 2023;
     private List<Integer> weekend;
     private List<Integer> weekday;
     private List<Integer> starday;
@@ -45,7 +47,7 @@ public class Event {
     }
 
     public List<String> getBenefits() {
-
+        return benefits;
     }
 
     public int christmasDiscount(int date) {
@@ -57,9 +59,22 @@ public class Event {
         return discount;
     }
 
-    public int calculateTotalDiscount() {
-        int total = 0;
-
-        return total;
+    public int giftDiscount() {
+        int discount = 0;
+        if (gift) {
+            discount += CHAMPAGNE_PRICE;
+            benefits.add(String.format("증정 이벤트: -%s원",df.format(discount)));
+        }
+        return discount;
     }
+
+    public int weekdayDiscount(int date, Order order) {
+        int discount = 0;
+        if (weekday.contains(date)) {
+            discount = order.getClassificationNum("Dessert") * WEEK_DISCOUNT_PRICE;
+            benefits.add(String.format("평일 할인: -%s원",df.format(discount)));
+        }
+        return discount;
+    }
+
 }

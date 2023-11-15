@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.model.Date;
+import christmas.model.Event;
 import christmas.model.Order;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -44,8 +45,11 @@ public class OutputView {
         System.out.println(giftMenu);
     }
 
-    public static void printBenefit() {
+    public static void printBenefit(Event event) {
+        printEmptyLine();
         System.out.println(BENEFIT);
-
+        for (String benefit : event.getBenefits()) {
+            System.out.println(benefit);
+        }
     }
 }

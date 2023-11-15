@@ -20,6 +20,7 @@ public class ChristmasController {
 
         benefitPreviewStart();
 
+        benefitInfo();
     }
 
     public void inputDate() {
@@ -48,7 +49,20 @@ public class ChristmasController {
         checkGiftMenu();
     }
 
+    public void benefitInfo() {
+        int totalDiscountPrice = calculateTotalDiscount();
+        OutputView.printBenefit(event);
+    }
+
     public void checkGiftMenu() {
         OutputView.printGiftMenu(event.getGiftMenu(order.priceBeforeDiscount()));
+    }
+
+    public int calculateTotalDiscount() {
+        int total = 0;
+        event.christmasDiscount(date.getDate());
+        event.giftDiscount();
+        event.weekdayDiscount(date.getDate(),order);
+        return total;
     }
 }
