@@ -13,6 +13,7 @@ public class OutputView {
     private static final String TOTAL_BENEFIT_PRICE = "<총혜택 금액>";
     private static final String PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
     private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
+    private static final String NOTHING = "없음";
     private static final int ZERO = 0;
     private static final String DEFAULT_TOTAL_BENEFIT_PRICE = "0원";
     static DecimalFormat df = new DecimalFormat("###,###");
@@ -52,6 +53,9 @@ public class OutputView {
     public static void printBenefit(Event event) {
         printEmptyLine();
         System.out.println(BENEFIT);
+        if (event.getBenefits().isEmpty()) {
+            System.out.println(NOTHING);
+        }
         for (String benefit : event.getBenefits()) {
             System.out.println(benefit);
         }
