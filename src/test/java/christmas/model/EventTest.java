@@ -20,4 +20,13 @@ class EventTest {
         Assertions.assertEquals(event.christmasDiscount(25),3400);
         Assertions.assertEquals(event.christmasDiscount(26),0);
     }
+
+    @DisplayName("증정에 따라 할인가격이 정상적으로 반환되는지 확인")
+    @Test
+    void 증정할인_테스트() {
+        event.getGiftMenu(1000);
+        Assertions.assertEquals(event.giftDiscount(),0);
+        event.getGiftMenu(120000);
+        Assertions.assertEquals(event.giftDiscount(),25000);
+    }
 }
