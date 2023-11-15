@@ -45,5 +45,11 @@ class EventTest {
         Assertions.assertEquals(event.specialDiscount(4),0);
     }
 
-
+    @DisplayName("주말 할인 테스트")
+    @Test
+    void 주말할인_테스트() {
+        Order order = new Order("티본스테이크-2");
+        Assertions.assertEquals(event.weekendDiscount(1,order),4046);
+        Assertions.assertEquals(event.specialDiscount(27),0);
+    }
 }
