@@ -35,7 +35,7 @@ public class Event {
 
     public String getGiftMenu(final int priceBeforeDiscount) {
         String gift = DEFAULT;
-        if (priceBeforeDiscount > PRICE_FOR_GIFT) {
+        if (priceBeforeDiscount >= PRICE_FOR_GIFT) {
             gift = GIFT_MENU;
             this.gift = true;
         }
