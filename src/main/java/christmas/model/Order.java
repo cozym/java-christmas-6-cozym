@@ -27,6 +27,7 @@ public class Order {
         }
     }
 
-
-
+    public HashMap<String,Integer> getOrder() {
+        return order;
+    }
 }

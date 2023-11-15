@@ -16,7 +16,8 @@ public class ChristmasController {
 
         inputOrder();
 
-        OutputView.startPrintEvent(date);
+        benefitPreviewStart();
+
     }
 
     public void inputDate() {
@@ -35,5 +36,10 @@ public class ChristmasController {
             System.out.println(e.getMessage());
             inputOrder();
         }
+    }
+
+    public void benefitPreviewStart() {
+        OutputView.startPrintEvent(date);
+        OutputView.printOrderMenu(order.getOrder());
     }
 }

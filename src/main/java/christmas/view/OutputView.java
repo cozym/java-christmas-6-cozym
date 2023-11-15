@@ -1,8 +1,10 @@
 package christmas.view;
 
 import christmas.model.Date;
+import java.util.HashMap;
 
 public class OutputView {
+    private static final String ORDER_MENU = "<주문 메뉴>";
 
 
     public static void printEmptyLine() {
@@ -14,5 +16,12 @@ public class OutputView {
         printEmptyLine();
     }
 
-
+    public static void printOrderMenu(HashMap<String,Integer> order) {
+        printEmptyLine();
+        System.out.println(ORDER_MENU);
+        order.forEach((name, price) -> {
+            System.out.printf("%s %d개",name,price);
+            printEmptyLine();
+        });
+    }
 }
