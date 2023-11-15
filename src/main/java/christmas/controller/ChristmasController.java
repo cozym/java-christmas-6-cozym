@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.Date;
+import christmas.model.Event;
 import christmas.model.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -8,6 +9,7 @@ import christmas.view.OutputView;
 public class ChristmasController {
     private Date date;
     private Order order;
+    private Event event;
 
     public void start() {
         InputView.printStart();
@@ -39,8 +41,14 @@ public class ChristmasController {
     }
 
     public void benefitPreviewStart() {
+        event = new Event();
         OutputView.startPrintEvent(date);
         OutputView.printOrderMenu(order.getOrder());
         OutputView.printPriceBeforeDiscount(order);
+        checkGiftMenu();
+    }
+
+    public void checkGiftMenu() {
+        OutputView.printGiftMenu(event.getGiftMenu(order.priceBeforeDiscount()));
     }
 }

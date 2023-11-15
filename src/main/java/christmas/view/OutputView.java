@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class OutputView {
     private static final String ORDER_MENU = "<주문 메뉴>";
     private static final String BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
+    private static final String GIFT_MENU = "<증정 메뉴>";
     static DecimalFormat df = new DecimalFormat("###,###");
 
 
@@ -34,5 +35,11 @@ public class OutputView {
         System.out.println(BEFORE_DISCOUNT);
         System.out.printf("%s원",df.format(order.priceBeforeDiscount()));
         printEmptyLine();
+    }
+
+    public static void printGiftMenu(String giftMenu) {
+        printEmptyLine();
+        System.out.println(GIFT_MENU);
+        System.out.println(giftMenu);
     }
 }
