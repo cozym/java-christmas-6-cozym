@@ -14,6 +14,7 @@ public class Event {
     private static final int CHAMPAGNE_PRICE = 25000;
     private static final int WEEK_DISCOUNT_PRICE = 2023;
     private static final int SPECIAL_DISCOUNT_PRICE = 1000;
+    private static final int MIN_PRICE_FOR_EVENT = 10000;
     private List<Integer> weekend;
     private List<Integer> weekday;
     private List<Integer> specialday;
@@ -63,6 +64,20 @@ public class Event {
             directDiscount -= CHAMPAGNE_PRICE;
         }
         return directDiscount;
+    }
+
+    public String getEventBadge() {
+        String badge = DEFAULT;
+        if (totalDiscount >= 5000) {
+            badge = "별";
+        }
+        if (totalDiscount >= 10000) {
+            badge = "트리";
+        }
+        if (totalDiscount >= 20000) {
+            badge = "산타";
+        }
+        return badge;
     }
 
     public int christmasDiscount(int date) {
@@ -116,10 +131,12 @@ public class Event {
     }
 
     public void applyDiscounts(int visitDate, Order order) {
-        christmasDiscount(visitDate);
-        weekdayDiscount(visitDate,order);
-        weekendDiscount(visitDate,order);
-        specialDiscount(visitDate);
-        giftDiscount();
+        if (order.priceBeforeDiscount() >= MIN_PRICE_FOR_EVENT) {
+            christmasDiscount(visitDate);
+            weekdayDiscount(visitDate, order);
+            weekendDiscount(visitDate, order);
+            specialDiscount(visitDate);
+            giftDiscount();
+        }
     }
 }

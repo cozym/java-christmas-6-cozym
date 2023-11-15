@@ -54,6 +54,7 @@ public class ChristmasController {
         OutputView.printBenefit(event);
         OutputView.printTotalBenefitPrice(event.getTotalDiscount());
         OutputView.printPriceAfterDiscount(order.priceBeforeDiscount(),event.getDirectDiscount());
+        OutputView.printEventBadge(event.getEventBadge());
     }
 
     public void checkGiftMenu() {

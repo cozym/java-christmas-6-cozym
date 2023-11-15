@@ -12,6 +12,7 @@ public class OutputView {
     private static final String BENEFIT = "<혜택 내역>";
     private static final String TOTAL_BENEFIT_PRICE = "<총혜택 금액>";
     private static final String PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
+    private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
     private static final int ZERO = 0;
     private static final String DEFAULT_TOTAL_BENEFIT_PRICE = "0원";
     static DecimalFormat df = new DecimalFormat("###,###");
@@ -70,5 +71,12 @@ public class OutputView {
         printEmptyLine();
         System.out.println(PRICE_AFTER_DISCOUNT);
         System.out.printf("%s원",df.format(priceBeforeDiscount-directDiscount));
+        printEmptyLine();
+    }
+
+    public static void printEventBadge(String badge) {
+        printEmptyLine();
+        System.out.println(EVENT_BADGE_MESSAGE);
+        System.out.println(badge);
     }
 }
