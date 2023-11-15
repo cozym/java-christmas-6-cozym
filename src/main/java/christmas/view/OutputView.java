@@ -13,6 +13,8 @@ public class OutputView {
     private static final String BENEFIT = "<혜택 내역>";
     private static final String TOTAL_BENEFIT_PRICE = "<총혜택 금액>";
     private static final String PRICE_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
+    private static final int ZERO = 0;
+    private static final String DEFAULT_TOTAL_BENEFIT_PRICE = "0원";
     static DecimalFormat df = new DecimalFormat("###,###");
 
 
@@ -55,9 +57,13 @@ public class OutputView {
         }
     }
 
-    public static void printTotalBenefitPrice() {
+    public static void printTotalBenefitPrice(int totalDiscount) {
+        String totalBenefitPrice = DEFAULT_TOTAL_BENEFIT_PRICE;
         printEmptyLine();
         System.out.println(TOTAL_BENEFIT_PRICE);
-
+        if (totalDiscount != ZERO) {
+            totalBenefitPrice = String.format("-%s원",df.format(totalDiscount));
+        }
+        System.out.println(totalBenefitPrice);
     }
 }

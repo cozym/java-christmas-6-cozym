@@ -50,10 +50,9 @@ public class ChristmasController {
     }
 
     public void benefitInfo() {
-        int totalDiscountPrice = calculateTotalDiscount();
         event.applyDiscounts(date.getDate(),order);
         OutputView.printBenefit(event);
-
+        OutputView.printTotalBenefitPrice(event.getTotalDiscount());
     }
 
     public void checkGiftMenu() {
