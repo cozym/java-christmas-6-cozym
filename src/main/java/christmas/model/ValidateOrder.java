@@ -19,7 +19,7 @@ public class ValidateOrder {
     }
 
     public String checkHyphen(final String menuNum) throws IllegalArgumentException {
-        if (!menuNum.contains("-")) {
+        if (!menuNum.contains("-") || menuNum.split("-").length != 2) {
             throw new IllegalArgumentException(ErrorMessage.invalidOrder());
         }
         return menuNum;
