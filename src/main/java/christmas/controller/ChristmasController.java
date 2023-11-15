@@ -41,5 +41,6 @@ public class ChristmasController {
     public void benefitPreviewStart() {
         OutputView.startPrintEvent(date);
         OutputView.printOrderMenu(order.getOrder());
+        OutputView.printPriceBeforeDiscount(order);
     }
 }

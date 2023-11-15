@@ -1,10 +1,14 @@
 package christmas.view;
 
 import christmas.model.Date;
+import christmas.model.Order;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class OutputView {
     private static final String ORDER_MENU = "<주문 메뉴>";
+    private static final String BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
+    static DecimalFormat df = new DecimalFormat("###,###");
 
 
     public static void printEmptyLine() {
@@ -20,8 +24,15 @@ public class OutputView {
         printEmptyLine();
         System.out.println(ORDER_MENU);
         order.forEach((name, price) -> {
-            System.out.printf("%s %d개",name,price);
+            System.out.printf("%s %s개",name,df.format(price));
             printEmptyLine();
         });
+    }
+
+    public static void printPriceBeforeDiscount(Order order) {
+        printEmptyLine();
+        System.out.println(BEFORE_DISCOUNT);
+        System.out.printf("%s원",df.format(order.priceBeforeDiscount()));
+        printEmptyLine();
     }
 }

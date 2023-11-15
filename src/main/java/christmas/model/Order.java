@@ -27,6 +27,24 @@ public class Order {
         }
     }
 
+    public int priceBeforeDiscount() {
+        int priceSum = 0;
+        for (String name : order.keySet()) {
+            priceSum += getMenuPrice(name) * order.get(name); // 메뉴 가격 * 메뉴 개수
+        }
+        return priceSum;
+    }
+
+    private int getMenuPrice(String name) {
+        int price = 0;
+        for (Menus menu : Menus.values()) {
+            if(name.equals(menu.getName())) {
+                price = menu.getPrice();
+            }
+        }
+        return price;
+    }
+
     public HashMap<String,Integer> getOrder() {
         return order;
     }
