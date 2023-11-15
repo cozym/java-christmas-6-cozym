@@ -16,8 +16,8 @@ class EventTest {
 
     @DisplayName("크리스마스 디데이 이벤트 테스트")
     @Test
-    void 디데이_테스트() {
-        String gift = event.getGiftMenu(119000);
-        Assertions.assertEquals(gift,"없음");
+    void 디데이할인_테스트() {
+        Assertions.assertEquals(event.christmasDiscount(25),3400);
+        Assertions.assertEquals(event.christmasDiscount(26),0);
     }
 }
